@@ -6,6 +6,8 @@ onBeforeMount(() => {
 
 function checkBoxes() {
   const boxs = document.querySelectorAll('.box');
+  console.log(boxs);
+
   const triggerBottom = (window.innerHeight / 5) * 4;
 
   boxs.forEach((box) => {

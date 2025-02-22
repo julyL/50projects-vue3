@@ -13,9 +13,14 @@ const navList = reactive<NavItem[]>([
 ]);
 const showNav = ref(false);
 
+let router = useRouter();
+
 function switchNav(path: string): void {
   showNav.value = false;
-  useRouter().push(path);
+  // useRouter() 只能在 setup() 或 <script setup> 中调用， 否则无法获取到Vue的上下文
+  console.log('无法获取到useRouter()的值', useRouter());
+
+  router.push(path);
 }
 </script>
 
