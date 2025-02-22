@@ -1,11 +1,15 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/',
-      redirect: '/day51',
+      name: 'home',
+      meta: {
+        title: 'home',
+      },
+      component: () => import('../views/Home.vue'),
     },
     {
       path: '/day01',
@@ -30,32 +34,22 @@ export const router = createRouter({
       meta: {
         title: 'Rotating Navigation Animation',
       },
-      component: () =>
-        import('../views/day03_RotatingNavigationAnimation/Index.vue'),
+      component: () => import('../views/day03_RotatingNavigationAnimation/Index.vue'),
       children: [
         {
           path: 'page01',
           name: 'page01',
-          component: () =>
-            import(
-              '../views/day03_RotatingNavigationAnimation/pages/Page01.vue'
-            ),
+          component: () => import('../views/day03_RotatingNavigationAnimation/pages/Page01.vue'),
         },
         {
           path: 'page02',
           name: 'page02',
-          component: () =>
-            import(
-              '../views/day03_RotatingNavigationAnimation/pages/Page02.vue'
-            ),
+          component: () => import('../views/day03_RotatingNavigationAnimation/pages/Page02.vue'),
         },
         {
           path: 'page03',
           name: 'page03',
-          component: () =>
-            import(
-              '../views/day03_RotatingNavigationAnimation/pages/Page03.vue'
-            ),
+          component: () => import('../views/day03_RotatingNavigationAnimation/pages/Page03.vue'),
         },
       ],
     },
@@ -370,8 +364,7 @@ export const router = createRouter({
       meta: {
         title: 'Netflix Mobile Navigation',
       },
-      component: () =>
-        import('../views/Day45_NetflixMobileNavigation/Index.vue'),
+      component: () => import('../views/Day45_NetflixMobileNavigation/Index.vue'),
     },
     {
       path: '/day46',
@@ -387,8 +380,7 @@ export const router = createRouter({
       meta: {
         title: 'Testimonial Box Switcher',
       },
-      component: () =>
-        import('../views/Day47_TestimonialBoxSwitcher/Index.vue'),
+      component: () => import('../views/Day47_TestimonialBoxSwitcher/Index.vue'),
     },
     {
       path: '/day49',
@@ -415,4 +407,4 @@ export const router = createRouter({
       component: () => import('../views/Day51_GluttonousSnake/Index.vue'),
     },
   ],
-})
+});

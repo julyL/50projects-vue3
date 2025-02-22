@@ -1,21 +1,21 @@
 <script setup lang="ts">
 interface NavItem {
-  id: number
-  path: string
-  class: string
-  name: string
+  id: number;
+  path: string;
+  class: string;
+  name: string;
 }
 
 const navList = reactive<NavItem[]>([
   { id: 1, path: '/day03/page01', class: 'fas fa-home', name: 'Home' },
   { id: 2, path: '/day03/page02', class: 'fas fa-user-alt', name: 'About' },
   { id: 3, path: '/day03/page03', class: 'fas fa-envelope', name: 'Contact' },
-])
-const showNav = ref(false)
+]);
+const showNav = ref(false);
 
 function switchNav(path: string): void {
-  showNav.value = false
-  useRouter().push(path)
+  showNav.value = false;
+  useRouter().push(path);
 }
 </script>
 
@@ -51,5 +51,5 @@ function switchNav(path: string): void {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

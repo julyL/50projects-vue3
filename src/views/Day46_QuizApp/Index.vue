@@ -44,24 +44,25 @@ const quizData = reactive([
     ],
     correct: 'b',
   },
-])
+]);
 
-const answer = ref('')
-const currentQuiz = ref(0)
-const score = ref(0)
+const answer = ref('');
+const currentQuiz = ref(0);
+const score = ref(0);
 const quizText = computed(() => {
-  return quizData[currentQuiz.value].question
-})
+  return quizData[currentQuiz.value].question;
+});
 
 function handlerSumit() {
   if (answer.value) {
-    if (answer.value === quizData[currentQuiz.value].correct)
-      score.value++
-    answer.value = ''
-    currentQuiz.value++
+    if (answer.value === quizData[currentQuiz.value].correct) score.value++;
+    answer.value = '';
+    currentQuiz.value++;
   }
   // eslint-disable-next-line no-alert
-  else { alert('请选择答案') }
+  else {
+    alert('请选择答案');
+  }
 }
 </script>
 
@@ -70,9 +71,7 @@ function handlerSumit() {
     <div class="quiz-container">
       <div v-if="currentQuiz === quizData.length" class="result">
         <h2>你答对了 {{ `${score}/${quizData.length}` }} 道题</h2>
-        <button onclick="location.reload()">
-          重置
-        </button>
+        <button onclick="location.reload()">重置</button>
       </div>
       <div v-else>
         <div class="quiz-header">
@@ -82,20 +81,18 @@ function handlerSumit() {
           <template v-for="(quiz, index) in quizData" :key="quiz.id">
             <ul v-if="currentQuiz === index">
               <li v-for="item in quiz.quizList" :key="item.id">
-                <input :id="item.id" v-model="answer" type="radio" name="answer" :value="item.id" class="answer">
+                <input :id="item.id" v-model="answer" type="radio" name="answer" :value="item.id" class="answer" />
                 <label :for="item.id">{{ item.text }}</label>
               </li>
             </ul>
           </template>
         </div>
-        <button @click="handlerSumit">
-          提交
-        </button>
+        <button @click="handlerSumit">提交</button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import './index.scss';
 </style>

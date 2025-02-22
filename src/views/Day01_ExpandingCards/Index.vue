@@ -26,12 +26,12 @@ const cardList = ref<{ [prop: string]: any }[]>([
     active: false,
     url: 'src/assets/imgs/005.jpg',
   },
-])
+]);
 // 切换active
 function toggleActive(index: number) {
   cardList.value.forEach((item, i) => {
-    item.active = (i === index)
-  })
+    item.active = i === index;
+  });
 }
 </script>
 
@@ -39,7 +39,8 @@ function toggleActive(index: number) {
   <div class="container">
     <template v-for="(img, index) in cardList" :key="index">
       <div
-        class="panel" :class="[img.active ? 'active' : '']"
+        class="panel"
+        :class="[img.active ? 'active' : '']"
         :style="{
           backgroundImage: `url(${img.url})`,
         }"
@@ -52,5 +53,5 @@ function toggleActive(index: number) {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

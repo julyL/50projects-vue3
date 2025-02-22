@@ -1,12 +1,7 @@
 <script setup lang="ts">
-const toggleActive = ref<boolean>(true)
+const toggleActive = ref<boolean>(true);
 
-const navList: { title: string }[] = [
-  { title: 'Home' },
-  { title: 'Works' },
-  { title: 'About' },
-  { title: 'Content' },
-]
+const navList: { title: string }[] = [{ title: 'Home' }, { title: 'Works' }, { title: 'About' }, { title: 'Content' }];
 </script>
 
 <template>
@@ -26,5 +21,5 @@ const navList: { title: string }[] = [
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

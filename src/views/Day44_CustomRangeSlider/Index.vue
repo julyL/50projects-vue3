@@ -1,25 +1,25 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const inputRef = ref()
-const labelRef = ref()
-const range = ref(50)
-const left = ref()
+const inputRef = ref();
+const labelRef = ref();
+const range = ref(50);
+const left = ref();
 
 function handlerInput() {
-  const range_width = getComputedStyle(inputRef.value).getPropertyValue('width')
-  const label_width = getComputedStyle(labelRef.value).getPropertyValue('width')
-  const num_width = +range_width.substring(0, range_width.length - 2)
-  const num_label_width = +label_width.substring(0, label_width.length - 2)
+  const range_width = getComputedStyle(inputRef.value).getPropertyValue('width');
+  const label_width = getComputedStyle(labelRef.value).getPropertyValue('width');
+  const num_width = +range_width.substring(0, range_width.length - 2);
+  const num_label_width = +label_width.substring(0, label_width.length - 2);
 
-  const max = +inputRef.value.max
-  const min = +inputRef.value.min
+  const max = +inputRef.value.max;
+  const min = +inputRef.value.min;
 
-  left.value = range.value * (num_width / max) - num_label_width / 2 + scale(range.value, min, max, 10, -10)
+  left.value = range.value * (num_width / max) - num_label_width / 2 + scale(range.value, min, max, 10, -10);
 }
 
 function scale(num, in_min, in_max, out_min, out_max) {
-  return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+  return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
 }
 </script>
 
@@ -27,12 +27,12 @@ function scale(num, in_min, in_max, out_min, out_max) {
   <div class="body">
     <h2>Custom Range Slider</h2>
     <div class="range-container">
-      <input id="range" ref="inputRef" v-model="range" type="range" min="0" max="100" @input="handlerInput">
+      <input id="range" ref="inputRef" v-model="range" type="range" min="0" max="100" @input="handlerInput" />
       <label ref="labelRef" for="range" :style="{ left: `${left}px` }">{{ range }}</label>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import './index.scss';
 </style>

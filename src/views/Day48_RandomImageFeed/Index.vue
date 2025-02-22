@@ -1,11 +1,11 @@
 <script setup>
 onMounted(() => {
-  getImgList()
-})
+  getImgList();
+});
 
-const imgList = ref([])
+const imgList = ref([]);
 async function getImgList() {
-  imgList.value = await getRandomImg()
+  imgList.value = await getRandomImg();
 }
 </script>
 
@@ -15,12 +15,12 @@ async function getImgList() {
     <div class="container">
       <template v-if="imgList.length">
         <!-- 懒加载 -->
-        <img v-for="(src, index) in imgList" :key="index" v-lazy="src">
+        <img v-for="(src, index) in imgList" :key="index" v-lazy="src" />
       </template>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

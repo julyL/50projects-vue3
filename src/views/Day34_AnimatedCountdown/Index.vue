@@ -1,29 +1,28 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue';
 
-const count = ref(3)
-let timer
-const infinity = ref('infinite')
+const count = ref(3);
+let timer;
+const infinity = ref('infinite');
 onMounted(() => {
-  runAnimation()
-})
+  runAnimation();
+});
 
 function replay() {
-  count.value = 3
-  infinity.value = 'infinite'
-  runAnimation()
+  count.value = 3;
+  infinity.value = 'infinite';
+  runAnimation();
 }
 
 function runAnimation() {
   timer = setInterval(() => {
     if (count.value < 2) {
-      infinity.value = ''
-      clearInterval(timer)
+      infinity.value = '';
+      clearInterval(timer);
+    } else {
+      count.value--;
     }
-    else {
-      count.value--
-    }
-  }, 1000)
+  }, 1000);
 }
 </script>
 
@@ -31,9 +30,7 @@ function runAnimation() {
   <div class="body">
     <div class="counter" :class="[infinity ? '' : 'hide']">
       <div class="nums">
-        <span class="in_out" :style="{ '--infinite': infinity }">{{
-          count
-        }}</span>
+        <span class="in_out" :style="{ '--infinite': infinity }">{{ count }}</span>
       </div>
       <h4>Get Ready</h4>
     </div>
@@ -48,5 +45,5 @@ function runAnimation() {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

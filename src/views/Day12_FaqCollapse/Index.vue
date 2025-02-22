@@ -1,16 +1,16 @@
 <script setup lang="ts">
 interface ListItem {
-  id: string
-  active: boolean
-  title: string
-  text: string
+  id: string;
+  active: boolean;
+  title: string;
+  text: string;
 }
 
 const faqList = reactive<ListItem[]>([
   {
     id: '01',
     active: true,
-    title: 'Why shouldn\'t we trust atoms?',
+    title: "Why shouldn't we trust atoms?",
     text: 'They make up everything',
   },
   {
@@ -22,7 +22,7 @@ const faqList = reactive<ListItem[]>([
   {
     id: '03',
     active: false,
-    title: 'What\'s the object-oriented way to become wealthy?',
+    title: "What's the object-oriented way to become wealthy?",
     text: 'Inheritance.',
   },
   {
@@ -37,13 +37,12 @@ const faqList = reactive<ListItem[]>([
     title: 'What is: 1 + 1?',
     text: 'Depends on who are you asking.',
   },
-])
+]);
 
 function toggleActive(index: number): void {
   faqList.forEach((faq, idx) => {
-    if (idx === index)
-      faq.active = !faq.active
-  })
+    if (idx === index) faq.active = !faq.active;
+  });
 }
 </script>
 
@@ -51,11 +50,7 @@ function toggleActive(index: number): void {
   <div class="body">
     <h1>Frequently Asked Questions</h1>
     <div class="faq-container">
-      <div
-        v-for="(faq, index) in faqList" :key="faq.id"
-        class="faq"
-        :class="[faq.active ? 'active' : '']"
-      >
+      <div v-for="(faq, index) in faqList" :key="faq.id" class="faq" :class="[faq.active ? 'active' : '']">
         <h3 class="faq-title">
           {{ faq.title }}
         </h3>
@@ -74,5 +69,5 @@ function toggleActive(index: number): void {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

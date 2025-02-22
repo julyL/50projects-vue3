@@ -1,34 +1,32 @@
 <script setup>
-const userList = ref([])
-const currentUser = ref()
-const idx = ref(1)
-const delay = 5000
-const animateDelay = computed(() => `${delay / 1000}s`)
-let timer
+const userList = ref([]);
+const currentUser = ref();
+const idx = ref(1);
+const delay = 5000;
+const animateDelay = computed(() => `${delay / 1000}s`);
+let timer;
 onMounted(() => {
-  getData()
-})
+  getData();
+});
 
 onUnmounted(() => {
-  clearInterval(timer)
-})
+  clearInterval(timer);
+});
 
 function toggleUser(idx) {
-  currentUser.value = userList.value[idx]
+  currentUser.value = userList.value[idx];
 }
 
 async function getData() {
-  const { data } = await getUserList()
+  const { data } = await getUserList();
   if (Object.keys(data).length) {
-    userList.value = data.testimonials
-    toggleUser(0)
+    userList.value = data.testimonials;
+    toggleUser(0);
     timer = setInterval(() => {
-      toggleUser(idx.value)
-      if (idx.value === userList.value.length - 1)
-        idx.value = 0
-      else
-        idx.value++
-    }, delay)
+      toggleUser(idx.value);
+      if (idx.value === userList.value.length - 1) idx.value = 0;
+      else idx.value++;
+    }, delay);
   }
 }
 </script>
@@ -36,9 +34,7 @@ async function getData() {
 <template>
   <div class="body">
     <div class="testimonial-container">
-      <div v-if="!currentUser">
-        Loading...
-      </div>
+      <div v-if="!currentUser">Loading...</div>
       <template v-else>
         <div class="progress-bar" />
         <div class="fas fa-quote-right fa-quote" />
@@ -47,7 +43,7 @@ async function getData() {
           {{ currentUser.text }}
         </p>
         <div class="user">
-          <img :src="currentUser.photo" alt="user" class="user-image">
+          <img :src="currentUser.photo" alt="user" class="user-image" />
           <div class="user-details">
             <h4 class="username">
               {{ currentUser.name }}
@@ -63,7 +59,7 @@ async function getData() {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 
 .progress-bar {
   animation: grow v-bind(animateDelay) linear infinite;

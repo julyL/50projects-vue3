@@ -1,9 +1,9 @@
 <script setup lang="ts">
 interface Listitem {
-  class: string
-  initial: number
-  target: number
-  content: string
+  class: string;
+  initial: number;
+  target: number;
+  content: string;
 }
 const targetList = reactive<Listitem[]>([
   {
@@ -19,43 +19,38 @@ const targetList = reactive<Listitem[]>([
     content: 'YouTube Subscribers',
   },
   { class: 'fa-facebook', initial: 0, target: 7500, content: 'Facebook Fans' },
-])
+]);
 
 onMounted(() => {
-  update()
-})
+  update();
+});
 
 function update() {
   targetList.forEach((counter) => {
-    updateCounter(counter)
-  })
+    updateCounter(counter);
+  });
 }
 
 function updateCounter(counter: Listitem) {
-  const target = counter.target
-  const c = counter.initial
+  const target = counter.target;
+  const c = counter.initial;
 
-  const increment = target / 200
+  const increment = target / 200;
 
   if (c < target) {
-    counter.initial = Math.ceil(c + increment)
+    counter.initial = Math.ceil(c + increment);
     setTimeout(() => {
-      updateCounter(counter)
-    }, 1)
-  }
-  else {
-    counter.initial = target
+      updateCounter(counter);
+    }, 1);
+  } else {
+    counter.initial = target;
   }
 }
 </script>
 
 <template>
   <div class="body">
-    <div
-      v-for="(item, index) in targetList"
-      :key="index"
-      class="counter-container"
-    >
+    <div v-for="(item, index) in targetList" :key="index" class="counter-container">
       <i :class="[`fab fa-3x ${item.class}`]" />
       <div class="counter">
         {{ item.initial }}
@@ -66,5 +61,5 @@ function updateCounter(counter: Listitem) {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

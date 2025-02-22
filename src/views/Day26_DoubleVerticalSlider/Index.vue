@@ -12,35 +12,30 @@ const imgList = reactive<{ url: string }[]>([
   {
     url: 'https://images.unsplash.com/photo-1510942201312-84e7962f6dbb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=da4ca7a78004349f1b63f257e50e4360&auto=format&fit=crop&w=1050&q=80',
   },
-])
+]);
 
-const titleList = reactive<{ one: string, two: string, color: string }[]>([
+const titleList = reactive<{ one: string; two: string; color: string }[]>([
   { one: 'Nature flower', two: 'all in pink', color: '#fd3555' },
-  { one: 'Bluuue Sky', two: 'with it\'s mountains', color: '#2a86ba' },
+  { one: 'Bluuue Sky', two: "with it's mountains", color: '#2a86ba' },
   { one: 'Lonely castle', two: 'in the wilderness', color: '#252e33' },
   { one: 'Flying eagle', two: 'in the sunset', color: '#ffb866' },
-])
+]);
 
-const activeSlideIndex = ref<number>(0)
-const sliderContainer = ref<HTMLElement>()
-const initializeTop = `-${(imgList.length - 1) * 100}vh`
-const sliderHeight = ref<number>(0)
+const activeSlideIndex = ref<number>(0);
+const sliderContainer = ref<HTMLElement>();
+const initializeTop = `-${(imgList.length - 1) * 100}vh`;
+const sliderHeight = ref<number>(0);
 
-const transform = computed<number>(
-  () => activeSlideIndex.value * sliderHeight.value,
-)
+const transform = computed<number>(() => activeSlideIndex.value * sliderHeight.value);
 
 function changeSlide(direction: string): void {
-  sliderHeight.value = (sliderContainer.value as HTMLElement).clientHeight
+  sliderHeight.value = (sliderContainer.value as HTMLElement).clientHeight;
   if (direction === 'up') {
-    activeSlideIndex.value++
-    if (activeSlideIndex.value > imgList.length - 1)
-      activeSlideIndex.value = 0
-  }
-  else if (direction === 'down') {
-    activeSlideIndex.value--
-    if (activeSlideIndex.value < 0)
-      activeSlideIndex.value = imgList.length - 1
+    activeSlideIndex.value++;
+    if (activeSlideIndex.value > imgList.length - 1) activeSlideIndex.value = 0;
+  } else if (direction === 'down') {
+    activeSlideIndex.value--;
+    if (activeSlideIndex.value < 0) activeSlideIndex.value = imgList.length - 1;
   }
 }
 </script>
@@ -55,24 +50,13 @@ function changeSlide(direction: string): void {
           transform: `translateY(${transform}px)`,
         }"
       >
-        <div
-          v-for="(title, index) in titleList"
-          :key="index"
-          :style="{ backgroundColor: title.color }"
-        >
+        <div v-for="(title, index) in titleList" :key="index" :style="{ backgroundColor: title.color }">
           <h1>{{ title.one }}</h1>
           <p>{{ title.two }}</p>
         </div>
       </div>
-      <div
-        class="right-slide"
-        :style="{ transform: `translateY(-${transform}px)` }"
-      >
-        <div
-          v-for="(img, index) in imgList"
-          :key="index"
-          :style="{ backgroundImage: `url(${img.url})` }"
-        />
+      <div class="right-slide" :style="{ transform: `translateY(-${transform}px)` }">
+        <div v-for="(img, index) in imgList" :key="index" :style="{ backgroundImage: `url(${img.url})` }" />
       </div>
 
       <div class="action-buttons">
@@ -88,5 +72,5 @@ function changeSlide(direction: string): void {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

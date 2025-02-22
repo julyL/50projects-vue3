@@ -1,20 +1,18 @@
 <script setup lang="ts">
 onBeforeMount(() => {
-  checkBoxes()
-  window.addEventListener('scroll', checkBoxes)
-})
+  checkBoxes();
+  window.addEventListener('scroll', checkBoxes);
+});
 
 function checkBoxes() {
-  const boxs = document.querySelectorAll('.box')
-  const triggerBottom = (window.innerHeight / 5) * 4
+  const boxs = document.querySelectorAll('.box');
+  const triggerBottom = (window.innerHeight / 5) * 4;
 
   boxs.forEach((box) => {
-    const boxTop = box.getBoundingClientRect().top
-    if (boxTop < triggerBottom)
-      box.classList.add('show')
-    else
-      box.classList.remove('show')
-  })
+    const boxTop = box.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) box.classList.add('show');
+    else box.classList.remove('show');
+  });
 }
 </script>
 
@@ -28,5 +26,5 @@ function checkBoxes() {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>
