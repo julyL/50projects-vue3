@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     VueDevTools(),
     AutoImport({
-      imports: ['vue', 'pinia', 'vue-router', '@vueuse/core'],
+      imports: ['vue', 'pinia', 'vue-router' /*'@vueuse/core'*/],
       dirs: ['./src/api/**'],
     }),
   ],
